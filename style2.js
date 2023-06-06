@@ -77,19 +77,23 @@ function del(index) {
   display();
 }
 
+
 function recharge() {
-    let pinInput = document.getElementById('pinInput').value;
-    let selectedCard = cards.find((card) => card.printref === pinInput);
-  
-    if (selectedCard) {
-    
-      selectedCard.status = true;
-  
-      alert('Recharge successful!');
-    } else {
-      alert('Invalid PIN. Please enter a valid PIN.');
-    }
+  let pinInput = document.getElementById('pinInput').value;
+  let selectedCard = cards.find((card) => card.printref === pinInput);
+
+  if (selectedCard) {
+    selectedCard.status = true;
+    localStorage.setItem('pinGen', JSON.stringify(cards)); // Update localStorage
+    display(); // Update the displayed table
+    alert('Recharge successful!');
+  } else {
+    alert('Invalid PIN. Please enter a valid PIN.');
   }
-  display();
+}
+
+
+
+display();
 
    
